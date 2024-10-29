@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization App</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <!-- <script src="https://code.highcharts.com/highcharts-more.js"></script> -->
+    <!-- Treemap module -->
+<!-- <script src="https://code.highcharts.com/modules/treemap.js"></script> -->
+<!-- Heatmap module (required for colorAxis) -->
+<!-- <script src="https://code.highcharts.com/modules/heatmap.js"></script> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.14/lottie.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="styles.css">
+   <style>
+       
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <div class="w-2/5 p-6 bg-white shadow-lg">
+            <div class="flex flex-col items-start mb-6">
+                <img src="https://782771295fc926251f8dc891d8142c83.cdn.bubble.io/f1730136533719x828412589097588400/inova-logo.png" alt="Inova logo" class="h-8 mb-4">
+                <h1 class="text-2xl font-bold">DataViz</h1>
+                <p class="text-sm text-gray-600">Powered by BLDR Core</p>
+            </div>
+            
+            <div class="mb-6">
+                <h2 class="text-xl font-semibold text-gray-400 mb-2">FILE UPLOADER</h2>
+                <div class="relative border-2 border-gray-300 border-dashed rounded-lg p-6 hover:border-blue-500 transition-colors duration-300 flex flex-col items-center justify-center">
+                    <input type="file" id="file-upload" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" multiple>
+                    <div class="text-center">
+                        <svg id="uploader-image" class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                            <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <div id="lottie-container"></div>
+                        <p class="mt-1"><span class="text-blue-500 font-medium">Add file</span> or drop files here</p>
+                    </div>
+                </div>
+                <div id="file-list" class="mt-4 space-y-2"></div>
+            </div>
+            
+            <div class="bg-gray-50 rounded-lg p-4 h-[calc(100vh-400px)] flex flex-col">
+                <div id="chatMessages" class="flex-grow overflow-y-auto mb-4">
+                    <!-- <div class="mb-4">
+                        <p class="bg-blue-100 text-blue-800 rounded-lg p-3 inline-block">Compare the USA and Italian GDP over the past 5 years as bar charts</p>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex items-start">
+                            
+                            <div class="ml-3">
+                                <p class="text-sm font-medium text-gray-900">AI</p>
+                                <p class="text-sm text-gray-500">aiMessage</p>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="mt-4">
+                    <div class="flex items-center">
+                        <input type="text" id="userInput" class="flex-grow rounded-l-lg p-2 border-t border-b border-l text-gray-800 border-gray-200 bg-white" placeholder="Type your message...">
+                        <button onclick="sendMessage()" class="px-4 py-2 rounded-r-lg bg-blue-500 text-white hover:bg-blue-600">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-3/5 p-6">
+            <h2 class="text-2xl font-bold mb-4">Analysis & Visualizations</h2>
+            <p id="dummyDataWarning" class="text-red-500 hide mb-4">This is dummy data which will be replaced when you chat</p>
+            <div id="chartContainer" class="hide bg-white p-4 rounded-lg shadow"></div>
+            <div id="noDataContainer" class="bg-white p-4 rounded-lg shadow flex flex-col items-center justify-center h-[calc(100vh-100px)]">
+                <div id="lottieAnimation" style="width: 300px; height: 300px;"></div>
+                <p class="text-xl font-semibold text-gray-600 mt-4 ml-4">Upload a file to get started</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="utils/upload.js"></script>
+    <script src="utils/message.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.7.0/jquery.lettering.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/textillate/0.4.0/jquery.textillate.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
